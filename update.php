@@ -1,14 +1,15 @@
 <?php 
     include("conexao.php");
-
+    
+    $id = $_GET ["id"];
     $nome = $_GET['nome'];
     $preco = $_GET['preço'];
     
-    $insert = "UPDATE INTO `produto` (`id_produto`, `nome`, `preco`) SET (NULL, '$nome', '$preco') WHERE id=". $_GET["id"];
+    $update = "UPDATE produto SET nome = '$nome', preco = '$preco' WHERE id_produto= $id";
 
-    $resultado = $conn->query($insert);
+    $result = $conn->query($update);
 
-    if ($resultado == TRUE){
+    if ($result === true){
         echo "Editado com sucesso!";
     }else{
         echo "Erro ao editar!";
@@ -16,3 +17,5 @@
 
 ?>
 
+<a href="read.php">
+    < voltar</a>
